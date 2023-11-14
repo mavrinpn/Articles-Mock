@@ -33,6 +33,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           showErrorAlert(context, state.message);
         });
+        context.read<AuthenticationBloc>().add(AuthenticationStarted());
       }
 
       return Scaffold(
@@ -95,7 +96,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               decoration: InputDecoration(
                                 errorText: null,
                                 suffix: IconButton(
-                                  onPressed: obscurePasswordTrigger,
+                                  onPressed: _obscurePasswordTrigger,
                                   tooltip: obscurePassword
                                       ? AppLocalizations.of(context)!
                                           .show_password
@@ -114,7 +115,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               padding: const EdgeInsets.only(top: 36),
                               child: FilledButton(
                                 key: const Key('submitButton'),
-                                onPressed: isLoading ? null : signButtonAction,
+                                onPressed: isLoading ? null : _signButtonAction,
                                 child: ValueListenableBuilder(
                                   valueListenable: isSignUpAction,
                                   builder: (context, value, child) {
@@ -174,13 +175,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     });
   }
 
-  void obscurePasswordTrigger() {
+  void _obscurePasswordTrigger() {
     setState(() {
       obscurePassword = !obscurePassword;
     });
   }
 
-  void signButtonAction() {
+  void _signButtonAction() {
     final formValidator = signFormKey.currentState!.validate();
     if (formValidator) {
       final email = emailTextController.text;

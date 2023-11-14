@@ -5,7 +5,6 @@ import 'package:articles_mock/main.dart';
 import 'package:articles_mock/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:articles_mock/presentation/pages/articles/article_detail_screen.dart';
 import 'package:articles_mock/presentation/pages/articles/articles_screen.dart';
-import 'package:articles_mock/presentation/pages/splash_screen.dart';
 import 'package:articles_mock/presentation/pages/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +13,7 @@ final _mainNavigatorKey = GlobalKey<NavigatorState>();
 
 GoRouter goRouter(AuthenticationBloc authenticationBloc) {
   return GoRouter(
-    initialLocation: '/splash',
+    initialLocation: '/welcome',
     navigatorKey: _mainNavigatorKey,
     debugLogDiagnostics: showDebug,
     redirect: ((context, state) {
@@ -40,10 +39,6 @@ GoRouter goRouter(AuthenticationBloc authenticationBloc) {
     }),
     refreshListenable: GoRouterRefreshStream(authenticationBloc.stream),
     routes: [
-      GoRoute(
-        path: '/splash',
-        builder: (context, state) => const SplashScreen(),
-      ),
       GoRoute(
         path: '/welcome',
         pageBuilder: (context, state) => CustomTransitionPage<void>(

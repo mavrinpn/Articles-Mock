@@ -13,7 +13,7 @@
   "weak_password": "Пароль слишком простой",
   "email_already_in_use": "Email уже зарегистрирован",
   "user_not_found": "Пользователь не найден",
-  "wrong_password": "wrong_password",
+  "wrong_password": "Неправильный пароль",
   "invalid_email": "Неправильный email",
   "unknown_exception": "Неизвестная ошибка",
   "error": "Ошибка",

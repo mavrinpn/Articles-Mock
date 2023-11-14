@@ -2,7 +2,7 @@ import 'package:articles_mock/core/error/exception.dart';
 
 class LocalAuthService {
   Map<String, String> emailToPasswordMap = {};
-  String currentUserEmail = 'jh@hj.f';
+  String currentUserEmail = '';
 
   String getCurrentUserEmail() {
     return currentUserEmail;
