@@ -1,5 +1,7 @@
 // ignore: depend_on_referenced_packages
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:articles_mock/app/settings.dart';
+import 'package:articles_mock/presentation/blocs/article/article_bloc.dart';
 import 'package:articles_mock/app/app.dart';
 import 'package:articles_mock/presentation/blocs/articles/articles_bloc.dart';
 import 'package:articles_mock/presentation/blocs/app_bloc_observer.dart';
@@ -10,12 +12,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/intl_standalone.dart';
 
-const showDebug = true;
+const showDebug = false;
 
 void main() async {
   usePathUrlStrategy(); // turn off the # in the URLs on the web
+
   Intl.systemLocale = await findSystemLocale();
+
   initServiceLocator();
+
+  Settings appSettings = Settings();
+  await appSettings.init();
 
   if (showDebug) {
     Bloc.observer = AppBlocObserver();
@@ -31,8 +38,11 @@ void main() async {
         BlocProvider<ArticlesBloc>(
           create: (context) => sl<ArticlesBloc>(),
         ),
+        BlocProvider<ArticleBloc>(
+          create: (context) => sl<ArticleBloc>(),
+        ),
       ],
-      child: const App(),
+      child: App(appSettings: appSettings),
     ),
   );
 }

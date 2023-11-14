@@ -19,6 +19,7 @@ class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
     });
 
     on<UpdateArticlesEvent>((event, emit) async {
+      emit(ArticlesLoading());
       await loadItems(event, emit);
     });
   }

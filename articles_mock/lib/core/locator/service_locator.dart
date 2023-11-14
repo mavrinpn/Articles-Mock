@@ -6,6 +6,8 @@ import 'package:articles_mock/data/repositories/articles_repository.dart';
 import 'package:articles_mock/data/repositories/authentication_repository.dart';
 import 'package:articles_mock/data/services/local_auth_service.dart';
 import 'package:articles_mock/data/services/local_data_service.dart';
+import 'package:articles_mock/presentation/blocs/article/article_bloc.dart';
+import 'package:articles_mock/presentation/blocs/articles/articles_bloc.dart';
 import 'package:articles_mock/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -18,6 +20,12 @@ void initServiceLocator() {
         userSignUp: sl(),
         userSignOut: sl(),
         userEmail: sl(),
+      ));
+  sl.registerFactory(() => ArticlesBloc(
+        getArtilcesList: sl(),
+      ));
+  sl.registerFactory(() => ArticleBloc(
+        getArtilceById: sl(),
       ));
 
   // UseCases

@@ -30,11 +30,11 @@ GoRouter goRouter(AuthenticationBloc authenticationBloc) {
       }
       if (currentLocation == '/welcome' &&
           authenticationBloc.state is AuthenticationSuccess) {
-        return '/spending';
+        return '/articles_list';
       }
       if (currentLocation == '/splash' &&
           authenticationBloc.state is AuthenticationSuccess) {
-        return '/spending';
+        return '/articles_list';
       }
       return null;
     }),

@@ -2,7 +2,7 @@ import 'package:articles_mock/presentation/theme/color_theme_extension.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const accentColor = Color(0xFF9053EB);
+  static const accentColor = Color.fromARGB(255, 235, 192, 83);
   static const _buttonHeight = 50.0;
   static const _fontFamily = 'SF UI Display';
 
@@ -165,6 +165,19 @@ class AppTheme {
           color: colorTheme.titleTextColor,
           fontSize: 18,
           fontWeight: FontWeight.w700,
+        ),
+      ),
+      listTileTheme: ListTileThemeData(
+        contentPadding: const EdgeInsets.all(20),
+        tileColor: colorTheme.subviewBackgroundColor,
+        titleTextStyle: TextStyle(
+          color: colorTheme.titleTextColor,
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+        ),
+        subtitleTextStyle: TextStyle(
+          color: colorTheme.subtitleTextColor,
+          fontSize: 14,
         ),
       ),
     );
