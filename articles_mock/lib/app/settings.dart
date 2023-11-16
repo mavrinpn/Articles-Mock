@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Settings extends ChangeNotifier {
-  late ThemeMode themeMode;
-  ThemeMode get getThemeMode => themeMode;
+  late ThemeMode _themeMode;
+  ThemeMode get getThemeMode => _themeMode;
   void setTheme(ThemeMode newTheme) {
-    themeMode = newTheme;
+    _themeMode = newTheme;
     notifyListeners();
   }
 
   init() async {
-    themeMode = ThemeMode.light;
+    _themeMode = ThemeMode.light;
   }
 
   @override
